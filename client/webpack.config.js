@@ -32,8 +32,8 @@ module.exports = () => {
         name: 'Text Editor',
         short_name: 'Editor',
         description: 'A simple text editor',
-        background_color: '',
-        theme_color: '',
+        background_color: '#3d126b',
+        theme_color: '#3d126b',
         start_url: './',
         publicPath: './',
         icons: [
@@ -50,7 +50,7 @@ module.exports = () => {
       rules: [
         {
           test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.m?js$/,
