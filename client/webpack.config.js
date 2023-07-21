@@ -7,6 +7,7 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 // TODO: Add CSS loaders and babel to webpack.
 
 module.exports = () => {
+  // this section sets the entry and output paths for webpack
   return {
     mode: 'development',
     entry: {
@@ -18,14 +19,17 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      // html webpack plugin to generate an index.html file in the dist folder
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Text Editor',
       }),
+      // injects the manifest.json file in the dist folder using the src-sw.js
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
+      // requirements for the manifest.json file to make the app installable
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -45,7 +49,7 @@ module.exports = () => {
         ],
       }),
     ],
-
+    // includes the css and babel in the bundle
     module: {
       rules: [
         {
